@@ -1,0 +1,29 @@
+.topbarContainer {
+  width: 100%;
+  min-height: 550px;
+  background-image: url("../../../assets/images/banner.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.overlay {
+  min-height: 550px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.bannerContent {
+  text-align: center;
+  padding-top: 10em;
+}
+
+.siteTitle {
+  font-size: 48px;
+}
+
+.siteDesc {
+  font-size: 22px;
+}
