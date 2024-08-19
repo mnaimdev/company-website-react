@@ -8,9 +8,11 @@ import ProtectedRoute from './components/frontend/ProtectedRoute'
 import Register from './components/frontend/Register'
 import ResetPassword from './components/frontend/ResetPassword'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import CourseDetails from './components/frontend/CourseDetails'
+import Footer from './components/frontend/footer/Footer'
+import AboutPage from './components/frontend/pages/AboutPage'
+import ContactPage from './components/frontend/pages/ContactPage'
 
 
 function App() {
@@ -22,6 +24,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<AboutPage />}></Route>
+          <Route path="/contact" element={<ContactPage />}></Route>
+          <Route path="/course/:id" element={<CourseDetails />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
@@ -35,6 +40,8 @@ function App() {
 
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         </Routes>
+
+        <Footer />
       </BrowserRouter>
 
       <div>

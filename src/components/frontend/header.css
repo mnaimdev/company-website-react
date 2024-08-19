@@ -1,0 +1,31 @@
+.navbarBackground {
+  background-color: rgba(00, 00, 00, 0) !important;
+  transition: background-color 400ms linear;
+}
+
+.nav-logo {
+  width: 100px;
+  height: 40px;
+}
+
+.navbarText {
+  text-decoration: none !important;
+  font-family: "Montserrat", sans-serif;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.navbarTextScroll {
+  text-decoration: none !important;
+  font-family: "Montserrat", sans-serif;
+  color: #000000 !important;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.navbarBackgroundScroll {
+  background-color: white !important;
+  transition: background-color 400ms linear;
+  box-shadow: 0 0 8px 0 rgba(0, 115, 230, 0.3);
+}

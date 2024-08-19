@@ -1,7 +1,17 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import blackLogo from '../../assets/images/logo_black.png';
+import whiteLogo from '../../assets/images/logo_white.png';
+import './header.css';
 
 const Header = () => {
+  const [navbar, setNavbar] = useState({
+    navbarText: 'navbarText mx-3',
+    logo: [whiteLogo],
+    navbarBackground: 'navbarBackground'
+  });
+
   const navigate = useNavigate();
   
   const token = localStorage.getItem('token');
@@ -10,47 +20,78 @@ const Header = () => {
     localStorage.clear();
     navigate('/');
   }
+
+  useEffect(() => {
+    const scrollHandle = () => {
+      if (window.scrollY > 100) {
+        setNavbar({
+          navbarBackground: 'navbarBackgroundScroll',
+          logo: [blackLogo],
+          navbarText: 'navbarTextScroll mx-3',
+        })
+      } else {
+        setNavbar({
+          navbarText: 'navbarText mx-3',
+          logo: [whiteLogo],
+          navbarBackground: 'navbarBackground'
+      })
+      }
+    }
+  
+    window.addEventListener('scroll', scrollHandle);
+  }, []);
   
   return (
     <>
-    <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-  <div className="container-fluid">
-    <NavLink to="/" className="navbar-brand">Easy Shop</NavLink>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarText">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link active" aria-current="page">Home</NavLink>
-        </li>
-        
-        {token && <li className="nav-item">
-          <NavLink to="/profile" className="nav-link">Profile</NavLink>
-        </li>}
-      </ul>
-      <span className="navbar-text">
-        {token && <ul className="navbar-nav">
-            <li className="nav-item">
-            <button className='btn btn-dark' onClick={logout}>Logout</button>
-            </li>
-        </ul>}
+<Navbar collapseOnSelect expand="lg" fixed='top' className={navbar.navbarBackground}>
+      <Container>
+        <Navbar.Brand href="#home">
+          <img src={navbar.logo} className='nav-logo' alt="" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            
+          </Nav>
 
-        {!token && <ul className="navbar-nav">
-            <li className="nav-item">
-            <NavLink to="/login" class="nav-link" style={{marginRight: '20px', textDecoration: 'none'}}>Login</NavLink>
+          <Nav>
+            <Nav.Link >
+              <Link to="/" style={{textDecoration: 'none'}} className={navbar.navbarText}>Home</Link>
+            </Nav.Link>
+            
+            <Nav.Link >
+              <Link style={{textDecoration: 'none'}} className={navbar.navbarText}to="/about">About</Link>
+            </Nav.Link>
 
-            </li>
-            <li className="nav-item">
-            <NavLink to="/register" class="nav-link" style={{marginRight: '20px', textDecoration: 'none'}}>Register</NavLink>
-            </li>
-        </ul> }
-        
-      </span>
-    </div>
-  </div>
-</nav>
+            <Nav.Link >
+              <Link style={{textDecoration: 'none'}} className={navbar.navbarText}to="/contact">Contact Us</Link>
+            </Nav.Link>
 
+            {token && <Nav.Link>
+              <Link to="/profile" style={{textDecoration: 'none'}}  className={navbar.navbarText}>Profile</Link>
+            </Nav.Link>
+            }
+
+            {token && <Nav.Link >
+              <Link  className={navbar.navbarText} onClick={logout} style={{textDecoration: 'none'}}>Logout</Link>
+            </Nav.Link>
+            }
+
+            {!token && <Nav.Link >
+              <Link to="/login" style={{textDecoration: 'none'}} className={navbar.navbarText}>Login</Link>
+            </Nav.Link>
+            }
+            
+            {!token && <Nav.Link >
+              <Link to="/register"  style={{textDecoration: 'none'}} className={navbar.navbarText}>Register</Link>
+            </Nav.Link>
+            }
+                        
+          </Nav>
+
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     
     </>
   )
