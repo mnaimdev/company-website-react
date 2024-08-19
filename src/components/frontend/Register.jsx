@@ -1,9 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import PageTop from './pages/PageTop';
 
 const Register = () => {
+
+    useEffect(() => {
+        window.scroll(0, 0);
+      }, []);
+    
+
     const [form, setForm] = useState({name: '', email: '', password: ''});
     const navigate = useNavigate();
 
@@ -50,7 +57,8 @@ const Register = () => {
         setForm({name: '', email: '', password: ''});
     }
   return (
-    <div>
+    <>
+     <PageTop pagetitle="Register Page" />
         <div className="container" >
             <div className="row">
                 <div className="col-lg-8 m-auto" >
@@ -91,7 +99,7 @@ const Register = () => {
                 </div>
             </div>
         </div>
-    </div>
+    </>
   )
 }
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PageTop from './pages/PageTop';
 
 const Login = () => {
     const [form, setForm] = useState({email: '', password: ''});
@@ -50,6 +51,7 @@ const Login = () => {
     }
   return (
     <>
+    <PageTop pagetitle="Login Page" />
         <div className="container" >
             <div className="row">
                 <div className="col-lg-8 m-auto" >

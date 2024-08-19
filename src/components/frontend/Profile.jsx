@@ -6,6 +6,10 @@ import PageTop from './pages/PageTop';
 
 const Profile = () => {
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 

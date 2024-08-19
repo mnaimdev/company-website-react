@@ -1,10 +1,14 @@
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import PageTop from "./PageTop";
 
 const ContactPage = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <>
     <PageTop pagetitle="Contact Us" />

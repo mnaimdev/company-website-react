@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import About from './about/About';
 import Chart from './chart/Chart';
 import Course from './course/Course';
@@ -10,8 +10,13 @@ import Topbar from './topbar/Topbar';
 import Video from './video/Video';
 
 const Home = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <>
+    <title>Home Page</title>
       <Topbar />
       <Service />
       <Chart />

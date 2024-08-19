@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import About from "../about/About";
 import PageTop from "./PageTop";
 
 const AboutPage = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <>
       <PageTop pagetitle="About Page" />

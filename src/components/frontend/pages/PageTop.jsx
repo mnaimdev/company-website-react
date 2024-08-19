@@ -5,6 +5,7 @@ import './pagetop.css';
 const PageTop = ({pagetitle}) => {
   return (
     <>
+    <title>{pagetitle}</title>
       <Container fluid={true} className="topFixedPage p-0">
         <div className="topPageOverlay">
           <Container className="topContentPage">
